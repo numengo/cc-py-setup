@@ -27,7 +27,7 @@ if __name__ == "__main__":
         except subprocess.CalledProcessError:
             subprocess.check_call([sys.executable, "-m", "virtualenv", env_path])
         print("Installing `jinja2` {% if cookiecutter.test_matrix_configurator == "yes" %}and `matrix` {% endif %}into bootstrap environment...")
-        subprocess.check_call([join(bin_path, "pip"), "install", "jinja2"{% if cookiecutter.test_matrix_configurator == "yes" %}, "matrix"{% endif %}])
+        subprocess.check_call([join(bin_path, "pip"), "install", "jinja2", "py", "matrix"{% if cookiecutter.test_matrix_configurator == "yes" %}, "matrix"{% endif %}])
     activate = join(bin_path, "activate_this.py")
     # noinspection PyCompatibility
     exec(compile(open(activate, "rb").read(), activate, "exec"), dict(__file__=activate))
@@ -68,7 +68,8 @@ if __name__ == "__main__":
     tox_environments = [line for line in tox_environments if line not in ['clean', 'report', 'docs', 'check']]
 {% endif %}
     for name in os.listdir(join("ci", "templates")):
-        with open(join(base_path, name), "w") as fh:
-            fh.write(jinja.get_template(name).render(tox_environments=tox_environments))
-        print("Wrote {}".format(name))
+        if not name.startswith("template"):
+	        with open(join(base_path, name), "w") as fh:
+	            fh.write(jinja.get_template(name).render(tox_environments=tox_environments))
+	        print("Wrote {}".format(name))
     print("DONE.")

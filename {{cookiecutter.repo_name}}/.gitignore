@@ -1,9 +1,27 @@
 *.py[cod]
+__pycache__
+
+# Misc
+*.old
+*.bak
+*.bak*
+* - Copie.*
+* - Copy.*
+*.tmp
+*.lnk
+tmp
+bak
+*.db
 
 # C extensions
 *.so
+*.dll
+*.obj
+*.o
+*.pdb
 
 # Packages
+*.jar
 *.egg
 *.egg-info
 dist
@@ -12,6 +30,8 @@ eggs
 .eggs
 parts
 bin
+binaries
+binaries-dbg
 var
 sdist
 wheelhouse
@@ -21,9 +41,16 @@ lib
 lib64
 venv*/
 pyvenv*/
+cache
+builds
+distrib
+static-collect
 
 # Installer logs
 pip-log.txt
+*.log
+*.lock*
+logs
 
 # Unit test / coverage reports
 .coverage
@@ -62,3 +89,8 @@ docs/_build
 .bootstrap
 .appveyor.token
 *.bak
+
+# Cookiecutter
+output/
+boilerplate/
+python-nameless

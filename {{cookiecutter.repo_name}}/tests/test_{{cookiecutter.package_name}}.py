@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {%- if cookiecutter.command_line_interface == 'click' %}
 from click.testing import CliRunner
 {% endif %}
