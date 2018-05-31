@@ -7,17 +7,14 @@ from setuptools import find_packages
 from setuptools import setup
 
 import io
-{% if cookiecutter.c_extension_support != 'no' -%}
 import os
-{% endif -%}
 import re
-{% if cookiecutter.c_extension_support == 'cffi' -%}
 import sys
-{% endif -%}
-from glob import glob
+import subprocess
 from os.path import basename
 from os.path import dirname
 from os.path import join
+from glob import glob
 {% if cookiecutter.c_extension_support not in ['no', 'cffi'] -%}
 from os.path import relpath
 {% endif -%}
@@ -87,12 +84,11 @@ def get_version(package):
     """
     Return package version as listed in `__version__` in `init.py`.
     """
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    init_py = open(os.path.join(dir_path, 'src', package, '__init__.py')).read()
+    dir_path = dirname(os.path.realpath(__file__))
+    init_py = open(join(dir_path, 'src', package, '__init__.py')).read()
     return re.search("^__version__ = ['\"]([^'\"]+)['\"]",
                      init_py, re.MULTILINE).group(1)
 
-version = get_version(package)
 
 name = '{{ cookiecutter.distribution_name }}'
 package = '{{ cookiecutter.package_name }}'
@@ -101,6 +97,8 @@ url = 'https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.rep
 author={{ '{0!r}'.format(cookiecutter.full_name).lstrip('ub') }},
 author_email={{ '{0!r}'.format(cookiecutter.email).lstrip('ub') }},
 license = '{{ cookiecutter.license }}'
+version = get_version(package)
+
 
 def get_package_data(package):
     """
