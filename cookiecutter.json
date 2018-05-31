@@ -15,8 +15,9 @@
     "test_deps": "",
     "dev_status": ["Alpha", "Beta", "Production/Stable", "Mature"],
     "version": "0.1.0",
-    "release_date": "2017-12-31",
+    "release_date": "today",
     "year": [
+        "now",
         "2018",
         "2017",
         "2016",
@@ -25,7 +26,7 @@
         "2013",
         "2012",
         "2011",
-        "2010",
+        "2010"
     ],
     "license": ["GNU General Public License v3", "NUMENGO", "BSD 2-Clause License", "BSD 3-Clause License", "MIT license", "ISC license", "Apache Software License 2.0"],
     "c_extension_support": ["no", "yes", "cffi", "cython"],

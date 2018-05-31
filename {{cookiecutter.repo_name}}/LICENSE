@@ -78,4 +78,104 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+{%- elif cookiecutter.license == 'NUMENGO' -%}
+numenGo End User Licence Agreement”
+Copyright (c) {{ '<YEAR>' if cookiecutter.year == 'now' else cookiecutter.year }} Numengo 
+
+NUMENGO, 27 rue JB Magnet, 42153 Riorges, France
+admin@numengo.com
+
+
+This NUMENGO EULA is a legal agreement between you (either an individual or a single entity) and NUMENGO for the Software identified above.
+The terms also apply to any NUMENGO 
+ • libraries 
+ • updates,
+ • supplements,
+ • Internet-based services, and
+ • support services,
+for this software, unless other terms accompany those items.
+
+By installing, copying, or otherwise using the Software, you agree to be bound by the terms of this EULA and to have paid the corresponding price.
+
+If you do not agree with the terms of this EULA, you are not authorized to install and/or use the Software.
+
+If you want to benefit of a limited license on the demonstration version of the Software, you have to contact MUMENGO to obtain an activation code.
+
+1.PRICES
+Prices are defined as the current prices at the date of the order and are valid for six months maximum. If you benefit of a limited license on the demonstration version of the Software, this one is conceded to you for free.
+
+By paying the price of License(s) you will obtain one activation code by License. 
+
+2.GRANT OF LICENSE.
+The Software is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties.The Software is licensed, not sold.
+
+This EULA grants you the following rights with respect to the Software:
+
+NUMENGO grants you an individual, personal, nonexclusive License to make and use copies of the Software for the sole purpose of using it. 
+
+The rights are granted without limit of time, for the legal period of protection of the Software according to French law.
+
+If you benefit of a limited license on the demonstration version of the Software, this one is conceded to you for a limited period of 90 days from the date of communication of the activation code.
+
+Your rights conceded on the Software are specified in this agreement, and NUMENGO retains all rights not expressly granted to you in this agreement.
+
+
+2.1 This License grants you the following nonexclusive rights: 
+a) Use the Software only for the operations of engineering relating with the simulation of systems using fluids.
+b) Make one (1) copy of the Software for back-up and archival purpose and in executable form only, provided that you reproduce all the copyright, trademark and other proprietary notices which appear on or in the Software. The copy is subject to the terms of the present contract. You may use copy only to reinstall the Software
+c) Install the Software on a limited number of computers equal to the number of licences mentioned in your command order. 
+d) to execute the Software only on the computer where the Software is physically installed. If several computers or terminals execute an only physical installation, you must compulsory acquire an equal number of Licenses.
+
+2.2 This License do not authorize you to :
+a) Modify the Software in order to correct bugs and errors without the prior consent of NUMENGO
+b) Make any financial profit of the use of the Software
+c) Rent, share the Software or grant any kind of rights regarding the Software or any portion thereof in any form to any third party without the prior consent of NUMENGO.
+d) Translate, reverse-engineer, decompile, disassemble partially or completely the Software, except if such activity comply with the conditions of the article 122-6-1 of the French intellectual property code. If interoperability problems between the Software and other computer programs are encountered, you accept to inform NUMENGO and study with it the possible solutions.
+e) Remove or alter any the Software identification, proprietary notice, labels or trademarks which appear on or in the Software.
+f) Reproduce all or part of the Software documentation, or modify it notably by including other documents. 
+g) Permit third parties to benefit from the use or functionality of the Software via a timesharing, service bureau, or other arrangement.
+
+2.3 Restrictions: 
+This nonexclusive License is Bound to YOU and can NOt be sold Nor transferred to a third party without the prior authorisation of NUMENGO. In consequence you may not transfer the Software with or without consideration. Except if expressly authorized by NUMENGO in a separated agreement, you agree not to permit any third party to use the Software in any form, and to use all reasonable efforts to ensure that no unauthorized use of the Software is made. 
+
+
+3.RESPONSIBILITY
+NUMENGO guarantees you against all counterfeiting lawsuits that could be brought against him, because of the possession and/or the use of the Software, at the only condition that you had informed the seller, within eight (8) days, about the summon and had ensured the seller the free right to defend himself.
+
+You will have and keep the control of the use of the Software installed on his computer. This is the reason why you engage your own and only responsibility about the exploitations of the results from the use of the Software. You recognise that NUMENGO will have no responsibility towards you or a third, for any damage that could result from the direct or indirect use of the Software by the licensee, excepted counterfeiting actions. 
+Moreover, NUMENGO does not warrant that the operation of the Software will be uninterrupted, or error-free. 
+
+Neither NUMENGO nor anyone else who has been involved in the production or distribution of the Software will be liable for any incidental, consequential, direct or indirect damages caused to you, any user or third party, including but not limited, to the loss of profits, loss of data or any other financial loss arising from the use of the program or inability to use it even if NUMENGO has been notified of the possibility of such damages.
+
+The financial liability of NUMENGO for damages of any kind whatever relating shall be limited to the amount paid to NUMENGO under this agreement in the last 12 months preceding the claim in question.
+
+4.NO LIABILITY FOR CONSEQUENTIAL DAMAGES. 
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ELUTIONS OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE the Software PRODUCT, EVEN IF ELUTIONS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME LAW AND JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU. 
+
+5.GUARANTEE
+NUMENGO warrants the conformity of the Software with technical characteristics described by NUMENGO during ninety (90) days from the date of receipt of activation code. Some states and jurisdictions do not allow limitations on duration of an implied warranty, so the above limitation may not apply to you. 
+NUMENGO will, at its own expense and as its sole obligation and your exclusive compensation for any breach of this warranty, use commercially reasonable efforts to correct any reproducible error you report to NUMENGO during the warranty period, either by providing you with a modified version of the Software that eliminates the error, or by instructing you in methods of operating the Software that eliminate the practical adverse effect of the error. Any such error correction provided to you will not extend the original warranty period. 
+If NUMENGO determines that it is unable to correct the error, NUMENGO will refund you all license fees you actually paid for the Software, in which case this agreement and your right to use the Software will terminate. This limited warranty is void if the defect has resulted from accident, abuse, misuse, or unauthorized modification of the Software or use of the Software in connection with other products, equipment, or software not supplied nor validated by NUMENGO. The warranty above gives you specific legal rights, and you may also have other rights which vary from state to state and jurisdiction to jurisdiction.
+
+6.NO OTHER WARRANTIES. 
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ELUTIONS AND ITS SUPPLIERS DISCLAIM ALL OTHER WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT WITH REGARD TO the Software PRODUCT, AND ANY ACCOMPANYING HARDWARE. THIS LIMITED WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS. YOU MAY HAVE OTHERS, WHICH VARY FROM STATE/JURISDICTION TO STATE/JURISDICTION. 
+
+7.CASES OF ABSOLUTE NECESSITY
+NUMENGO and you will be exempted from charges and responsibilities if the execution of the contract, and particularly the installation of the Software on your computer, was delayed or impossible in case of absolute necessity, including but not limited to riots, storms, strikes, fires, acts of God…
+
+8.TERMINATION
+If you fail to comply with any provision of this agreement, this license and your right to use the Software automatically terminate. This termination does not prevent NUMENGO from claiming any further damages. Upon the termination or expiration of the Agreement, whatever the grounds may be, you shall make any payment that has accrued up to the date of termination, stop immediately using the Software and send back to NUMENGO all the elements of the Software.
+
+9.COMPLIANCE WITH LAW
+In case of import, you agree that you will comply with all local tax and customs laws, regulations and codes of your country in the performance of this Agreement. You will pay the corresponding taxes.
+
+10.MISCELLANEOUS PROVISIONS
+If any provision of this agreement is held to be unenforceable upon a definite legal, statutory or judicial provisions, the remainder of this agreement shall continue in full force and effect.
+
+11.ATTRIBUTION OF THE COMPETENCE
+The present contract is governed by French law. 
+Every dispute between both parts about the interpretation or/and the execution of the contract, that could not reach an amicable arrangement, will be brought to the Commercial Court of LYON FRANCE, which has the full competence, wherever the Software or the defendant is. 
+
+
+If you have any questions concerning these terms and conditions, or if you would like to contact NUMENGO for any other reason, please go to www.numengo.com.
 {%- endif -%}

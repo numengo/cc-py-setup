@@ -189,8 +189,9 @@ setup(
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
     include_package_data=True,
     zip_safe=False,
-{%- set kws = cookiecutter.keywords|replace(' ','_') %}    
-{%- set kws_str = '["%s"]' % kws.split(',')|join('", "') %}    
+{#- set kws = cookiecutter.keywords|replace(' ','_') #}
+{%- set kws = cookiecutter.keywords %}
+{%- set kws_str = '["%s"]' % kws.split(',')|join('", "') %}
     keywords={{kws_str}},
 {%- set pyenvs = cookiecutter.python_envs|replace(' ','') %}
 {%- set pyvers = {'py27': '!=2.7.*', 'py30': '!=3.0.*', 'py31': '!=3.1.*',
@@ -205,7 +206,13 @@ setup(
 {%- if cookiecutter.command_line_interface != 'no' %}
     entry_points={
         'console_scripts': [
-            '{{ cookiecutter.command_line_interface_bin_name }} = {{ cookiecutter.package_name }}.cli:main',
+{%- set eps = cookiecutter.entry_points|replace(' ','') %}
+{%- if eps != '' %}
+{%- for e in eps.split(',') %}
+{% set cli = e.split('=')[0] %}
+            '{{cli}}={{ cookiecutter.package_name }}.cli:{{cli}}_cli',
+{%- endfor %}
+{%- endif %}
         ]
     },
 {%- endif %}

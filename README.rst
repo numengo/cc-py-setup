@@ -1,18 +1,39 @@
 ======================
-cookiecutter-pylibrary
+cookiecutter-numengo
 ======================
 
-Cookiecutter_ template for a Python python library. |travis| |appveyor|
+Cookiecutter template for a python library for complete setup configuration from cookiecutter . |travis| |appveyor|
 
-.. |travis| image:: http://img.shields.io/travis/ionelmc/cookiecutter-pylibrary/master.svg?style=flat&label=Travis
+.. |travis| image:: http://img.shields.io/travis/numengo/cc-py-setup/master.svg?style=flat&label=Travis
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/ionelmc/cookiecutter-pylibrary
+    :target: https://travis-ci.org/numengo/cc-py-setup
 
-.. |appveyor| image:: https://img.shields.io/appveyor/ci/ionelmc/cookiecutter-pylibrary/master.svg?style=flat&label=AppVeyor
+.. |appveyor| image:: https://img.shields.io/appveyor/ci/numengo/cc-py-setup/master.svg?style=flat&label=AppVeyor
     :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/ionelmc/cookiecutter-pylibrary
+    :target: https://ci.appveyor.com/project/numengo/cc-py-setup
 
 *Notes*:
+
+* This is a fork from the excellent https://github.com/ionelmc/cookiecutter-pylibrary
+  Most of the code and documentation from Ionel Cristian Maries "https://blog.ionelmc.ro"
+  with adaptations from Cedric ROMAN
+
+* More options are included in the cookie cutter to allow a complete project setup from a cookie cutter template.
+Therefore, it s more intended for people using an input config file rather than command line interface. User can
+define in the configuration file advanced settings such as python environments and dependencies to install, keywords, etc...
+Again, the idea is to be able to provide a project configuration file which will allow to generate completely the setup.py file,
+and ideally the cookiecutter can be used to regenerate the project each time the configuration change to update all environments.
+Further code generation can be achieved with the command line tools.
+
+* It will automatically create the project structure and default files, and set up all environments and create a Visual Studio
+project .pyproj properly configured with all Tox_ environments detected.
+
+* It installs command line tools to recreate visual studio projects, create new files according to a template, clean
+code, run tests, build distributions, etc...
+
+* It manages different django-cms versions in tox
+
+
 
 * This is largely designed to address this `blog post about packaging python
   libraries <https://blog.ionelmc.ro/2014/05/25/python-packaging/>`_.
@@ -73,7 +94,7 @@ This template is more involved than the regular `cookiecutter-pypackage
 
 First generate your project::
 
-  cookiecutter gh:ionelmc/cookiecutter-pylibrary
+  cookiecutter gh:numengo/cc-py-setup
 
 You will be asked for these fields:
 
@@ -87,7 +108,7 @@ You will be asked for these fields:
     * - ``full_name``
       - .. code:: python
 
-            "Ionel Cristian Maries"
+            "John Doe"
       - Main author of this library or application (used in ``AUTHORS.rst`` and ``setup.py``).
 
         Can be set in your ``~/.cookiecutterrc`` config file.
@@ -95,7 +116,7 @@ You will be asked for these fields:
     * - ``email``
       - .. code:: python
 
-            "contact@ionelmc.ro"
+            "johndoe@gmail.com"
       - Contact email of the author (used in ``AUTHORS.rst`` and ``setup.py``).
 
         Can be set in your ``~/.cookiecutterrc`` config file.
@@ -103,7 +124,7 @@ You will be asked for these fields:
     * - ``website``
       - .. code:: python
 
-            "https://blog.ionelmc.ro"
+            "https://blog.johndoe.com"
       - Website of the author (used in ``AUTHORS.rst``).
 
         Can be set in your ``~/.cookiecutterrc`` config file.
@@ -111,7 +132,7 @@ You will be asked for these fields:
     * - ``github_username``
       - .. code:: python
 
-            "ionelmc"
+            "johndoe"
       - GitHub user name of this project (used for GitHub link).
 
         Can be set in your ``~/.cookiecutterrc`` config file.
@@ -425,7 +446,7 @@ Note:
 Changelog
 ---------
 
-See `CHANGELOG.rst <https://github.com/ionelmc/cookiecutter-pylibrary/blob/master/CHANGELOG.rst>`_.
+See `CHANGELOG.rst <https://github.com/ionelmc/cc-py-setup/blob/master/CHANGELOG.rst>`_.
 
 Questions & answers
 -------------------
@@ -440,7 +461,7 @@ Why does ``tox.ini`` have a ``passenv = *``?
   all sorts of problems if you want to run/use any of these with Tox: SSH Agents, Browsers (for Selenium), Appengine SDK,
   VC Compiler and so on.
 
-  `cookiecutter-pylibrary` errs on the side of convenience here. You can always remove ``passenv = *`` if you like
+  `cc-py-setup` errs on the side of convenience here. You can always remove ``passenv = *`` if you like
   the strictness.
 
 Why is the version stored in several files (``pkg/__init__.py``, ``setup.py``, ``docs/conf.py``)?
