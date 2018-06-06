@@ -5,6 +5,7 @@ from __future__ import print_function
 
 from setuptools import find_packages
 from setuptools import setup
+from setuptools.command.install import install
 
 import io
 import os
@@ -85,9 +86,9 @@ def get_version(package):
     Return package version as listed in `__version__` in `init.py`.
     """
     dir_path = dirname(os.path.realpath(__file__))
-    init_py = open(join(dir_path, 'src', package, '__init__.py')).read()
-    return re.search("^__version__ = ['\"]([^'\"]+)['\"]",
-                     init_py, re.MULTILINE).group(1)
+    bumpversion = open(join(dir_path, '.bumpversion.cfg')).read()
+    return re.search("^current_version\s*=\s*(\S*)\s*\n",
+                     bumpversion, re.MULTILINE).group(1)
 
 
 name = '{{ cookiecutter.distribution_name }}'
@@ -151,8 +152,16 @@ install_requires = [
     {{i_deps_str}}, {% endif %} 
 ]
 
-cmd = ['pip','install', '-q'] + [i for i in install_requires if '-' in i or ':' in i]
-subprocess.check_call(cmd)
+# for setuptools to work properly, we need to install packages with - or : separately
+# and for that we need a hook
+# https://stackoverflow.com/questions/20288711/post-install-script-with-python-setuptools
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        cmd = ['pip','install', '-q'] + [i for i in install_requires if '-' in i or ':' in i]
+        subprocess.check_call(cmd)
+        install.run(self)
+
 install_requires = [i for i in install_requires if not ('-' in i or ':' in i)]
 
 test_requires = [
@@ -273,7 +282,9 @@ setup(
 {%- endif %}
         'Topic :: Utilities',
     ],
-
+    cmdclass={
+        'install': PostInstallCommand,
+    },
 )
 
 if sys.argv[-1] == 'publish':
