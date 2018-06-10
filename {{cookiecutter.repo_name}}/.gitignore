@@ -12,6 +12,12 @@ __pycache__
 tmp
 bak
 *.db
+TODEL
+TODO
+
+# jupyter
+.ipynb_checkpoints
+*.ipynb
 
 # C extensions
 *.so
@@ -70,6 +76,9 @@ htmlcov
 .idea
 *.iml
 *.komodoproject
+*.pyproj
+*.sln
+.vs
 
 # Complexity
 output/*.html
@@ -87,10 +96,12 @@ docs/_build
 .cache
 .pytest
 .bootstrap
+.pypirc
 .appveyor.token
 *.bak
 
 # Cookiecutter
+.cookiecutterrc
 output/
 boilerplate/
 python-nameless
