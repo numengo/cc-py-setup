@@ -79,6 +79,8 @@ htmlcov
 *.pyproj
 *.sln
 .vs
+.vscode
+*.pyperf
 
 # Complexity
 output/*.html

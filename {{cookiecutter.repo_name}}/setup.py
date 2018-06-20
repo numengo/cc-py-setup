@@ -116,7 +116,6 @@ def get_package_data(package):
     return {package: filepaths}
 
 setup_requires = [
-    'pathlib',
     'matrix',
 {%- if cookiecutter.test_runner == 'pytest' %}
     #'pytest-runner',
@@ -134,8 +133,6 @@ setup_requires +=  ['cffi>=1.0.0',] if if any(i.startswith('build') or i.startsw
 {%- endif %}
 
 install_requires = [
-    'pathlib',
-    'apipkg',
     'future',
 {%- if cookiecutter.gettext == 'yes' %}
     'python-gettext',
@@ -152,8 +149,8 @@ install_requires = [
     {{i_deps_str}}, {% endif %} 
 ]
 
-post_install_requires = [i for i in install_requires if ('-' in i or ':' in i)]
-install_requires = [i for i in install_requires if not ('-' in i or ':' in i)]
+post_install_requires = [i for i in install_requires if ('-' in i or ':' in i or '.' in i)]
+install_requires = [i for i in install_requires if not ('-' in i or ':' in i or '.' in i)]
 
 
 # for setuptools to work properly, we need to install packages with - or : separately
@@ -287,17 +284,6 @@ setup(
     ],
     cmdclass={
         'install': PostInstallCommand,
-        'develop': PostInstallCommand,
+        #'develop': PostInstallCommand,
     },
 )
-
-if sys.argv[-1] == 'publish':
-    if os.system("pip freeze | grep wheel"):
-        print("wheel not installed.\nUse `pip install wheel`.\nExiting.")
-        sys.exit()
-    os.system("python setup.py sdist upload")
-    os.system("python setup.py bdist_wheel upload")
-    print("You probably want to also tag the version now:")
-    print("  git tag -a {0} -m 'version {0}'".format(version))
-    print("  git push --tags")
-    sys.exit()
