@@ -5,14 +5,14 @@
 # automatically for any template). To use it:
 #
 #    pip install cookiepatcher
-#    cookiepatcher gh:RomanCedric/cc-py-setup project-path
+#    cookiepatcher gh:numengo/cc-py-setup project-path
 #
 # See:
 #    https://pypi.python.org/pypi/cookiepatcher
 #
 # Alternatively, you can run:
 #
-#    cookiecutter --overwrite-if-exists --config-file=project-path/.cookiecutterrc gh:RomanCedric/cc-py-setup
+#    cookiecutter --overwrite-if-exists --config-file=project-path/.cookiecutterrc gh:numengo/cc-py-setup
 
 default_context:
 {% for key, value in cookiecutter.items()|sort %}
