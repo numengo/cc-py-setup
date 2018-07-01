@@ -79,7 +79,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 {%- elif cookiecutter.license == 'NUMENGO' -%}
-numenGo End User Licence Agreement”
+NUMENGO End User Licence Agreement
 Copyright (c) {{ '<YEAR>' if cookiecutter.year == 'now' else cookiecutter.year }} Numengo 
 
 NUMENGO, 27 rue JB Magnet, 42153 Riorges, France
