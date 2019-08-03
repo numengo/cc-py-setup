@@ -3,47 +3,52 @@
 
 """Tests for `{{ cookiecutter.package_name }}` package."""
 
-import pytest
-
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
+{%- if cookiecutter.command_line_interface == 'click' %}
 from click.testing import CliRunner
+{% endif %}
+{%- if cookiecutter.c_extension_support != 'no' %}
+from {{ cookiecutter.package_name }} import {{ cookiecutter.c_extension_function }}
+{%- endif %}
+{%- if cookiecutter.command_line_interface != 'no' %}
+from {{ cookiecutter.package_name }}.cli import main
+{%- endif %}
+{%- if cookiecutter.test_matrix_configurator == 'yes' and cookiecutter.test_matrix_configurator == 'no' or
+       cookiecutter.command_line_interface == 'no' %}
+from {{ cookiecutter.package_name }} import main
 {%- endif %}
 
-import {{ cookiecutter.package_name }} import {{ cookiecutter.package_name }}
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.package_name }} import cli
+# PROTECTED REGION ID({{cookiecutter.package_name}}.tests.test_{{cookiecutter.package_name}}) ENABLED START
+
+def test_{{cookiecutter.package_name}}():
+    # from {{ cookiecutter.package_name }} import {{ cookiecutter.package_name }}
+    # assert {{ cookiecutter.package_name }}
+
+{% if cookiecutter.test_matrix_configurator == 'yes' and cookiecutter.test_matrix_configurator == 'no' %}
+    assert 'site-packages' in {{ cookiecutter.package_name }}.__file__
 {%- endif %}
-
-# PROTECTED REGION ID({{cookiecutter.package_name}}.test_{{cookiecutter.package_name}}) ENABLED START
-
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
-
-
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
-
-
-def test_command_line_interface():
-    """Test the CLI."""
+{%- if cookiecutter.command_line_interface == 'click' %}
     runner = CliRunner()
-    result = runner.invoke(cli.main)
+    result = runner.invoke(main, [])
+
+    assert result.output == 'Hello World!\n'
     assert result.exit_code == 0
-    assert '{{ cookiecutter.package_name }}.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
-    assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+{%- elif cookiecutter.command_line_interface == 'argparse' %}
+    main([])
+{%- elif cookiecutter.command_line_interface == 'plain' %}
+    assert main([]) == 0
+{%- else %}
+    pass
+{%- endif %}
+{%- if cookiecutter.c_extension_support != 'no' %}
+
+
+def test_{{ cookiecutter.c_extension_function }}():
+    assert {{ cookiecutter.c_extension_function }}([b'a', b'bc', b'abc']) == b'abc'
 {%- endif %}
 
 
 if __name__ == '__main__':
-    test_content(response)
+    # to run test file standalone
+    test_{{cookiecutter.package_name}}()
+
 # PROTECTED REGION END

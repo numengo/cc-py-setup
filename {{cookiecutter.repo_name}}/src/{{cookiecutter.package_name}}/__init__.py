@@ -25,6 +25,6 @@ from .{{ cookiecutter.c_extension_module }} import {{ cookiecutter.c_extension_f
 {%- endif %}
 
 # PROTECTED REGION ID({{cookiecutter.package_name}}.init) ENABLED START
-from {{cookiecutter.package_name}} import *
+from .{{cookiecutter.package_name}} import *
 __all__ = []
 # PROTECTED REGION END
