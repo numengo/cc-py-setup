@@ -120,7 +120,7 @@ setup_requires = [
 {%- if cookiecutter.test_runner == 'pytest' %}
     #'pytest-runner',
 {%- endif %}
-{%- set s_deps = cookiecutter.test_deps|replace(' ','') %}    
+{%- set s_deps = cookiecutter.test_requirements|replace(' ','') %}
 {%- set s_deps_str = "'%s'" % s_deps.split(',')|join("',\n    '") %}    
 {%- if s_deps|trim %}
     {{s_deps_str}}, {% endif %} 
@@ -143,7 +143,7 @@ install_requires = [
 {%- if cookiecutter.c_extension_support == 'cffi' %}
     'cffi>=1.0.0',
 {%- endif %}
-{%- set i_deps = cookiecutter.install_deps|replace(' ','') %}    
+{%- set i_deps = cookiecutter.requirements_install|replace(' ','') %}
 {%- set i_deps_str = "'%s'" % i_deps.split(',')|join("',\n    '") %}    
 {%- if i_deps|trim %}
     {{i_deps_str}}, {% endif %} 
@@ -169,7 +169,7 @@ test_requires = [
     'pytest',
     'pytest-logger',
 {%- endif %}
-{%- set t_deps = cookiecutter.test_deps|replace(' ','') %}    
+{%- set t_deps = cookiecutter.test_requirements|replace(' ','') %}
 {%- set t_deps_str = "'%s'" % t_deps.split(',')|join("',\n    '") %}    
 {%- if t_deps|trim %}
     {{t_deps_str}}, {% endif %} 
