@@ -25,7 +25,7 @@ import sys
 @click.command()
 @click.argument('names', nargs=-1)
 def main(names):
-    click.echo('Hello Wolrd!')
+    click.echo('Hello World!')
 {%- elif cookiecutter.command_line_interface == 'argparse' %}
 
 parser = argparse.ArgumentParser(description='{{cookiecutter.project_short_description}}')
