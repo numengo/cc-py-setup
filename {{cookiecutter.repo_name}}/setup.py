@@ -93,7 +93,7 @@ def get_version(package):
 
 name = '{{ cookiecutter.distribution_name }}'
 package = '{{ cookiecutter.package_name }}'
-description = '{{ cookiecutter.project_short_description }}'
+description = '{{ cookiecutter.short_description }}'
 url = 'https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
 author={{ '{0!r}'.format(cookiecutter.full_name).lstrip('ub') }},
 author_email={{ '{0!r}'.format(cookiecutter.email).lstrip('ub') }},
@@ -107,7 +107,7 @@ def get_package_data(package):
     package themselves.
     """
     walk = [(dirpath.replace(package + os.sep, '', 1), filenames)
-            for dirpath, dirnames, filenames in os.walk(os.path.join('src', package))
+            for dirpath, dirnames, filenames in os.walk(os.path.join(package))
             if not os.path.exists(os.path.join(dirpath, '__init__.py'))]
     filepaths = []
     for base, filenames in walk:
@@ -121,9 +121,9 @@ setup_requires = [
     #'pytest-runner',
 {%- endif %}
 {%- set s_deps = cookiecutter.test_requirements|replace(' ','') %}
-{%- set s_deps_str = "'%s'" % s_deps.split(',')|join("',\n    '") %}    
+{%- set s_deps_str = "'%s'" % s_deps.split(',')|join("',\n    '") %}
 {%- if s_deps|trim %}
-    {{s_deps_str}}, {% endif %} 
+    {{s_deps_str}}, {% endif %}
 ]
 {%- if cookiecutter.c_extension_support == 'cython' %}
 setup_requires +=  ['cython',] if Cython else [],
@@ -144,9 +144,9 @@ install_requires = [
     'cffi>=1.0.0',
 {%- endif %}
 {%- set i_deps = cookiecutter.requirements_install|replace(' ','') %}
-{%- set i_deps_str = "'%s'" % i_deps.split(',')|join("',\n    '") %}    
+{%- set i_deps_str = "'%s'" % i_deps.split(',')|join("',\n    '") %}
 {%- if i_deps|trim %}
-    {{i_deps_str}}, {% endif %} 
+    {{i_deps_str}}, {% endif %}
 ]
 
 post_install_requires = [i for i in install_requires if ('-' in i or ':' in i or '.' in i)]
@@ -170,14 +170,14 @@ test_requires = [
     'pytest-logger',
 {%- endif %}
 {%- set t_deps = cookiecutter.test_requirements|replace(' ','') %}
-{%- set t_deps_str = "'%s'" % t_deps.split(',')|join("',\n    '") %}    
+{%- set t_deps_str = "'%s'" % t_deps.split(',')|join("',\n    '") %}
 {%- if t_deps|trim %}
-    {{t_deps_str}}, {% endif %} 
+    {{t_deps_str}}, {% endif %}
 ]
 
 extras_requires = {
-}    
-    
+}
+
 setup(
     name=name,
     version=version,
@@ -190,10 +190,8 @@ setup(
     author=author,
     author_email=author_email,
     url=url,
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
+    packages=[package],
     package_data=get_package_data(package),
-    py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
     include_package_data=True,
     zip_safe=False,
 {#- set kws = cookiecutter.keywords|replace(' ','_') #}
@@ -202,9 +200,9 @@ setup(
     keywords={{kws_str}},
 {%- set pyenvs = cookiecutter.python_envs|replace(' ','') %}
 {%- set pyvers = {'py27': '!=2.7.*', 'py30': '!=3.0.*', 'py31': '!=3.1.*',
-                  'py32': '!=3.2.*', 'py33': '!=3.3.*', 'py34': '!=3.4.*', 
+                  'py32': '!=3.2.*', 'py33': '!=3.3.*', 'py34': '!=3.4.*',
                   'py35': '!=3.5.*', 'py36': '!=3.6.*',
-                  'pypy': '!=2.7.*', 'pypy3': '!=3.4.*'} %} 
+                  'pypy': '!=2.7.*', 'pypy3': '!=3.4.*'} %}
     setup_requires=setup_requires,
     install_requires=install_requires,
     requires=install_requires,
@@ -228,15 +226,15 @@ setup(
     cmdclass={'build_ext': optional_build_ext},
 {%- endif %}
 {%- if cookiecutter.c_extension_support == 'cffi' %}
-    cffi_modules=[i + ':ffi' for i in glob('src/*/_*_build.py')],
+    cffi_modules=[i + ':ffi' for i in glob(package+'/_*_build.py')],
 {%- else %}
     ext_modules=[
         Extension(
-            splitext(relpath(path, 'src').replace(os.sep, '.'))[0],
+            splitext(relpath(path).replace(os.sep, '.'))[0],
             sources=[path],
             include_dirs=[dirname(path)]
         )
-        for root, _, _ in os.walk('src')
+        for root, _, _ in os.walk(package)
         for path in glob(join(root,
 {%- if cookiecutter.c_extension_support == 'cython' %} '*.pyx' if Cython else '*.c'
 {%- else %} '*.c'{% endif %}))
@@ -245,7 +243,7 @@ setup(
 {%- endif %}
     classifiers=[
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
-{%- set maturity = { 
+{%- set maturity = {
 "Planning": "1 - Planning",
 "Pre-Alpha": "2 - Pre-Alpha",
 "Alpha": "3 - Alpha",

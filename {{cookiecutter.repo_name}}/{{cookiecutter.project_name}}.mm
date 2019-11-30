@@ -1,25 +1,12 @@
 <map version="freeplane 1.6.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <attribute_registry>
-    <attribute_name MANUAL="true" RESTRICTED="true" NAME="license">
-        <attribute_value VALUE=""/>
-        <attribute_value VALUE="Apache"/>
-        <attribute_value VALUE="BSD-2"/>
-        <attribute_value VALUE="BSD-3"/>
-        <attribute_value VALUE="MIT"/>
-        <attribute_value VALUE="Numengo"/>
-    </attribute_name>
-    <attribute_name MANUAL="true" RESTRICTED="true" NAME="release year">
-        <attribute_value VALUE="2018"/>
-        <attribute_value VALUE="2019"/>
-        <attribute_value VALUE="{{cookiecutter.year}}"/>
-    </attribute_name>
 </attribute_registry>
 <node FOLDED="false" ID="ID_822712631" CREATED="1564511595253" MODIFIED="1564564422683"><richcontent TYPE="NODE">
 
 <html>
   <head>
-    
+
   </head>
   <body>
     <h1>
@@ -143,7 +130,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<node TEXT="{{ cookiecutter.project_short_description }}" POSITION="right" ID="ID_439081159" CREATED="1564513063544" MODIFIED="1564562361030">
+<node TEXT="{{ cookiecutter.short_description }}" POSITION="right" ID="ID_439081159" CREATED="1564513063544" MODIFIED="1564562361030">
 <icon BUILTIN="idea"/>
 <edge COLOR="#7c007c"/>
 </node>

@@ -28,7 +28,7 @@ def main(names):
     click.echo('Hello World!')
 {%- elif cookiecutter.command_line_interface == 'argparse' %}
 
-parser = argparse.ArgumentParser(description='{{cookiecutter.project_short_description}}')
+parser = argparse.ArgumentParser(description='{{cookiecutter.short_description}}')
 parser.add_argument('names', metavar='NAME', nargs=argparse.ZERO_OR_MORE,
                     help="A name of something.")
 
@@ -41,7 +41,7 @@ def main(args=None):
 
 def main(argv=sys.argv):
     """
-    {{cookiecutter.project_short_description}}
+    {{cookiecutter.short_description}}
 
     :param argv: List of arguments
     :return: a return code

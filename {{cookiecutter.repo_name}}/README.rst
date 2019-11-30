@@ -99,7 +99,7 @@ Overview
 
 .. end-badges
 
-{{ cookiecutter.project_short_description|wordwrap(119) }}
+{{ cookiecutter.short_description|wordwrap(119) }}
 
 * Free software: {{ cookiecutter.license }}
 
@@ -110,6 +110,11 @@ Installation
 
     pip install {{ cookiecutter.distribution_name }}
 
+Settings are managed using
+`simple-settings <https://raw.githubusercontent.com/drgarcia1986/simple-settings>`__
+and can be overriden with configuration files (cfg, yaml, json) or with environment variables
+prefixed with {{ cookiecutter.package_name|upper }}_.
+
 Documentation
 =============
 
@@ -117,11 +122,6 @@ https://{{ cookiecutter.repo_name|replace('.', '') }}.readthedocs.io/
 
 Development
 ===========
-Settings are managed using
-`simple-settings <https://raw.githubusercontent.com/drgarcia1986/simple-settings>`__
-and can be overriden with configuration files (cfg, yaml, json) or with environment variables
-prefixed with {{ cookiecutter.package_name|upper }}_.
-
 
 To run the all tests run::
 

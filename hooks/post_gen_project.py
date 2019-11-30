@@ -46,8 +46,8 @@ if __name__ == "__main__":
 {% endif %}
 
 {%- if cookiecutter.command_line_interface == 'no' %}
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '__main__.py'))
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', 'cli.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '__main__.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', 'cli.py'))
 {% endif %}
 
 {%- if cookiecutter.test_matrix_configurator == 'no' %}
@@ -55,21 +55,21 @@ if __name__ == "__main__":
 {% endif %}
 
 {%- if cookiecutter.c_extension_support == 'no' %}
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.c'))
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.c'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
 {%- elif cookiecutter.c_extension_support == 'cffi' %}
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
 {%- elif cookiecutter.c_extension_support == 'cython' %}
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.c'))
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.c'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
     try:
         subprocess.check_call(['tox', '-e', 'cythonize'])
     except Exception:
         subprocess.check_call([sys.executable, '-mtox', '-e', 'cythonize'])
 {%- else %}
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
-    os.unlink(join('src', '{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}.pyx'))
+    os.unlink(join('{{ cookiecutter.package_name }}', '{{ cookiecutter.c_extension_module }}_build.py'))
 {%- endif %}
 
 {%- if cookiecutter.appveyor == 'no' %}

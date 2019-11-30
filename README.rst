@@ -31,8 +31,6 @@ project .pyproj properly configured with all Tox_ environments detected.
 * It installs command line tools to recreate visual studio projects, create new files according to a template, clean
 code, run tests, build distributions, etc...
 
-* It manages different django-cms versions in tox
-
 
 
 * This is largely designed to address this `blog post about packaging python
@@ -161,7 +159,7 @@ You will be asked for these fields:
             "nameless"
       - PyPI distribution name (what you would ``pip install``).
 
-    * - ``project_short_description``
+    * - ``short_description``
       - .. code:: python
 
             "An example package [...]"
