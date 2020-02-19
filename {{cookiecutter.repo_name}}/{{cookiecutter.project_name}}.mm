@@ -1,27 +1,24 @@
-<map version="freeplane 1.6.0">
+<map version="freeplane 1.7.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<attribute_registry>
-</attribute_registry>
-<node FOLDED="false" ID="ID_822712631" CREATED="1564511595253" MODIFIED="1564564422683"><richcontent TYPE="NODE">
+<node FOLDED="false" ID="ID_822712631" CREATED="1564511595253" MODIFIED="1577179915091"><richcontent TYPE="NODE">
 
 <html>
   <head>
-
+    
   </head>
   <body>
     <h1>
       {{cookiecutter.project_name}}
     </h1>
-    <h2>
-      www.{{cookiecutter.domain_name}}
-    </h2>
   </body>
 </html>
 </richcontent>
 <attribute_layout NAME_WIDTH="55.49999834597116 pt" VALUE_WIDTH="110.99999669194231 pt"/>
+<attribute NAME="cc-template" VALUE="cc-py-setup"/>
 <attribute NAME="version" VALUE="{{cookiecutter.version}}"/>
 <attribute NAME="release year" VALUE="{{cookiecutter.year}}"/>
 <attribute NAME="languages" VALUE="en"/>
+<attribute NAME="domain" VALUE="http://{{cookiecutter.domain_name}}"/>
 <attribute NAME="keywords" VALUE="{{cookiecutter.keywords}}"/>
 <attribute NAME="license" VALUE="Numengo"/>
 <hook NAME="MapStyle">
@@ -134,12 +131,12 @@
 <icon BUILTIN="idea"/>
 <edge COLOR="#7c007c"/>
 </node>
-<node TEXT="authors" POSITION="right" ID="ID_1099217662" CREATED="1564512586456" MODIFIED="1564562190310" LINK="{{cookiecutter.repo_name}}/AUTHORS.rst">
+<node TEXT="authors" POSITION="right" ID="ID_1099217662" CREATED="1564512586456" MODIFIED="1564562190310" LINK="%7B%7Bcookiecutter.repo_name%7D%7D/AUTHORS.rst">
 <icon BUILTIN="group"/>
 <edge COLOR="#0000ff"/>
-<node TEXT="{{cookiecutter.full_name}}" ID="ID_1625049955" CREATED="1564512868837" MODIFIED="1564513399553" LINK="mailto:{{cookiecutter.email}}"/>
+<node TEXT="{{cookiecutter.full_name}}" ID="ID_1625049955" CREATED="1564512868837" MODIFIED="1564513399553" LINK="mailto:%7B%7Bcookiecutter.email%7D%7D"/>
 </node>
-<node TEXT="documentation" POSITION="right" ID="ID_10359407" CREATED="1564512049272" MODIFIED="1564562378591" LINK="{{cookiecutter.repo_name}}/README.rst">
+<node TEXT="documentation" POSITION="right" ID="ID_10359407" CREATED="1564512049272" MODIFIED="1564562378591" LINK="%7B%7Bcookiecutter.repo_name%7D%7D/README.rst">
 <icon BUILTIN="help"/>
 <edge COLOR="#7c7c00"/>
 </node>
@@ -151,7 +148,7 @@
 <edge COLOR="#0000ff"/>
 <node TEXT="environment" ID="ID_611638581" CREATED="1564525004691" MODIFIED="1564563897544">
 <icon BUILTIN="gohome"/>
-<attribute NAME="python_envs" VALUE="{{cookiecutter.python_envs}}" OBJECT="org.freeplane.features.format.FormattedObject|{{cookiecutter.python_envs}}|number:decimal:#0.####"/>
+<attribute NAME="python_envs" VALUE="{{cookiecutter.python_envs}}" OBJECT="org.freeplane.features.format.FormattedObject|java.lang.String&amp;#x7c;{{cookiecutter.python_envs}}|number:decimal:#0.####"/>
 <node TEXT="requirements" ID="ID_805509740" CREATED="1564511844874" MODIFIED="1564525025465">
 <node TEXT="base" ID="ID_1193327370" CREATED="1564514737493" MODIFIED="1564514739592"/>
 <node TEXT="dev" ID="ID_1881762815" CREATED="1564511877888" MODIFIED="1564511881057"/>

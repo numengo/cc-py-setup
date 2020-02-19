@@ -4,7 +4,7 @@
   "github_username": "numengo",
   "project_name": "My Project",
   "domain_name": "{{ cookiecutter.project_name|lower|replace(' ','-')}}.com",
-  "domain": "http://www.{{cookiecutter.domain_name}}",
+  "domain": "http://{{cookiecutter.domain_name}}",
   "repo_name": "python-{{ cookiecutter.project_name|lower|replace(' ','-') }}",
   "package_name": "{{ cookiecutter.project_name|lower|replace(' ','_')|replace('-','_') }}",
   "distribution_name": "{{ cookiecutter.package_name|replace('_','-') }}",
