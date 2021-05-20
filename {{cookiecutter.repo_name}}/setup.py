@@ -211,11 +211,12 @@ setup(
 {%- if cookiecutter.command_line_interface != 'no' %}
     entry_points={
         'console_scripts': [
+            '{{ cookiecutter.command_line_interface_bin_name }}={{ cookiecutter.package_name }}.cli:cli'
 {%- set eps = cookiecutter.entry_points|replace(' ','') %}
 {%- if eps != '' %}
 {%- for e in eps.split(',') %}
 {% set cli = e.split('=')[0] %}
-            '{{cli}}={{ cookiecutter.package_name }}.cli:{{cli}}_cli',
+            '{{cli}}={{ cookiecutter.package_name }}.commands.cmd_{{cli}}:cli',
 {%- endfor %}
 {%- endif %}
         ]

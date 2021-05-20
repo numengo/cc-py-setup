@@ -28,6 +28,9 @@ from .{{ cookiecutter.c_extension_module }} import {{ cookiecutter.c_extension_f
 {%- endif %}
 
 # PROTECTED REGION ID({{cookiecutter.package_name}}.init) ENABLED START
+from ngoschema.loaders import register_module
+register_module('{{cookiecutter.package_name}}')
+
 from .{{cookiecutter.package_name}} import *
 __all__ = [
     'settings',

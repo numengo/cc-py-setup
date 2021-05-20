@@ -10,22 +10,42 @@ Why does this file exist, and why not put this in __main__?
   - When you import __main__ it will get executed again (as a module) because
     there's no ``{{cookiecutter.package_name}}.__main__`` in ``sys.modules``.
 Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
+
+{% if cookiecutter.command_line_interface == 'click' %}
+The command line interface loads subcommands dynamically from a plugin folder and other things.
+
+All the commands are implemented as plugins in the `{{cookiecutter.package_name}}.commands` package.
+If a python module is placed named "cmd_foo" it will show up as "foo" command and the `cli` object
+within it will be loaded as nested Click command.
+{% endif -%}
 """
 {%- if cookiecutter.command_line_interface == 'click' %}
+import os, sys
 import click
+from ngoschema.cli import ComplexCLI, base_cli, run_cli
 {%- elif cookiecutter.command_line_interface == 'argparse' %}
 import argparse
 {%- else %}
 import sys
 {%- endif %}
-{%- if cookiecutter.command_line_interface == 'click' %}
 
 # PROTECTED REGION ID({{cookiecutter.package_name}}.cli) ENABLED START
+{%- if cookiecutter.command_line_interface == 'click' %}
 
-@click.command()
-@click.argument('names', nargs=-1)
-def main(names):
-    click.echo('Hello World!')
+CONTEXT_SETTINGS = dict(auto_envvar_prefix="{{cookiecutter.package_name|upper}}")
+CMD_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
+
+cli = click.command(
+    cls=ComplexCLI,
+    name='{{cookiecutter.command_line_interface_bin_name}}',
+    module_name='{{cookiecutter.package_name}}',
+    cmd_folder=CMD_FOLDER,
+    help='{{cookiecutter.short_description}}',
+    context_settings=CONTEXT_SETTINGS)(base_cli)
+
+if __name__ == "__main__":
+    # used for debug - allows to run the file and pass arguments to command line
+    run_cli(cli, sys.argv[1:])
 {%- elif cookiecutter.command_line_interface == 'argparse' %}
 
 parser = argparse.ArgumentParser(description='{{cookiecutter.short_description}}')

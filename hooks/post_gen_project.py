@@ -46,8 +46,8 @@ if __name__ == "__main__":
 {% endif %}
 
 {%- if cookiecutter.command_line_interface == 'no' %}
-    os.unlink(join('{{ cookiecutter.package_name }}', '__main__.py'))
     os.unlink(join('{{ cookiecutter.package_name }}', 'cli.py'))
+    os.unlink(join('{{ cookiecutter.package_name }}', 'commands'))
 {% endif %}
 
 {%- if cookiecutter.test_matrix_configurator == 'no' %}
