@@ -5,7 +5,6 @@ from __future__ import print_function
 
 from setuptools import find_packages
 from setuptools import setup
-from setuptools.command.install import install
 
 import io
 import os
@@ -95,8 +94,8 @@ name = '{{ cookiecutter.distribution_name }}'
 package = '{{ cookiecutter.package_name }}'
 description = '{{ cookiecutter.short_description }}'
 url = 'https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
-author={{ '{0!r}'.format(cookiecutter.full_name).lstrip('ub') }},
-author_email={{ '{0!r}'.format(cookiecutter.email).lstrip('ub') }},
+author = {{ '{0!r}'.format(cookiecutter.full_name).lstrip('ub') }}
+author_email = {{ '{0!r}'.format(cookiecutter.email).lstrip('ub') }}
 license = '{{ cookiecutter.license }}'
 version = get_version(package)
 
@@ -149,21 +148,6 @@ install_requires = [
     {{i_deps_str}}, {% endif %}
 ]
 
-post_install_requires = [i for i in install_requires if ('-' in i or ':' in i or '.' in i)]
-install_requires = [i for i in install_requires if not ('-' in i or ':' in i or '.' in i)]
-
-
-# for setuptools to work properly, we need to install packages with - or : separately
-# and for that we need a hook
-# https://stackoverflow.com/questions/20288711/post-install-script-with-python-setuptools
-class PostInstallCommand(install):
-    """Post-installation for installation mode."""
-    def run(self):
-        if post_install_requires:
-            cmd = ['pip', 'install', '-q'] + post_install_requires
-            subprocess.check_call(cmd)
-        install.run(self)
-
 test_requires = [
 {%- if cookiecutter.test_runner == 'pytest' %}
     'pytest',
@@ -184,13 +168,16 @@ setup(
     license=license,
     description=description,
     long_description='%s\n%s' % (
-        re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
+        re.compile('^.. skip-next.*', re.M | re.S).
+           sub('', re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).
+           sub('', read('README.rst'))),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
+    long_description_content_type='text/x-rst',
     author=author,
     author_email=author_email,
     url=url,
-    packages=[package],
+    packages=find_packages(exclude='tests'),
     package_data=get_package_data(package),
     include_package_data=True,
     zip_safe=False,
@@ -202,10 +189,12 @@ setup(
 {%- set pyvers = {'py27': '!=2.7.*', 'py30': '!=3.0.*', 'py31': '!=3.1.*',
                   'py32': '!=3.2.*', 'py33': '!=3.3.*', 'py34': '!=3.4.*',
                   'py35': '!=3.5.*', 'py36': '!=3.6.*',
+                  'py37': '!=3.7.*', 'py38': '!=3.8.*',
+                  'py39': '!=3.9.*', 'py310': '!=3.10.*',
+                  'py311': '!=3.11.*',
                   'pypy': '!=2.7.*', 'pypy3': '!=3.4.*'} %}
     setup_requires=setup_requires,
     install_requires=install_requires,
-    requires=install_requires,
     tests_require=test_requires,
     extras_require=extras_requires,
 {%- if cookiecutter.command_line_interface != 'no' %}
@@ -269,20 +258,15 @@ setup(
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: Implementation :: CPython',
 {%- if 'pypy' in pyenvs.split(',') %}
         'Programming Language :: Python :: Implementation :: PyPy',
 {%- endif %}
         'Topic :: Utilities',
     ],
-    cmdclass={
-        'install': PostInstallCommand,
-        #'develop': PostInstallCommand,
-    },
 )

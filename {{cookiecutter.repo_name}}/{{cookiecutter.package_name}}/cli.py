@@ -27,13 +27,21 @@ from ngoschema.cli import ComplexCLI, base_cli, run_cli
 import argparse
 {%- else %}
 import sys
+from ngoschema import APP_CONTEXT, DEFAULT_CONTEXT
+from {{cookiecutter.packagename}}.config import settings
+
 {%- endif %}
 
 # PROTECTED REGION ID({{cookiecutter.package_name}}.cli) ENABLED START
 {%- if cookiecutter.command_line_interface == 'click' %}
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix="{{cookiecutter.package_name|upper}}")
+CONTEXT_SETTINGS = dict(auto_envvar_prefix="{{cookiecutter.package_name|upper}}", show_default=True)
 CMD_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
+
+# in init, settings are available in app context whereas it is in default context in cli
+DEFAULT_CONTEXT.add_local_entries(settings=settings, **getattr(settings, 'DEFAULT_CONTEXT', {}))
+APP_CONTEXT.add_local_entries(_{{cookiecutter.package_name|lower}}_env=settings)
+
 
 cli = click.command(
     cls=ComplexCLI,
@@ -41,6 +49,7 @@ cli = click.command(
     module_name='{{cookiecutter.package_name}}',
     cmd_folder=CMD_FOLDER,
     help='{{cookiecutter.short_description}}',
+    no_args_is_help=True,
     context_settings=CONTEXT_SETTINGS)(base_cli)
 
 if __name__ == "__main__":

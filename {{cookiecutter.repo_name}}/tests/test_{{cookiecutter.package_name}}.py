@@ -10,7 +10,7 @@ from click.testing import CliRunner
 from {{ cookiecutter.package_name }} import {{ cookiecutter.c_extension_function }}
 {%- endif %}
 {%- if cookiecutter.command_line_interface != 'no' %}
-from {{ cookiecutter.package_name }}.cli import main
+from {{ cookiecutter.package_name }}.cli import cli
 {%- endif %}
 {%- if cookiecutter.test_matrix_configurator == 'yes' and cookiecutter.test_matrix_configurator == 'no' or
        cookiecutter.command_line_interface == 'no' %}
@@ -28,7 +28,7 @@ def test_{{cookiecutter.package_name}}():
 {%- endif %}
 {%- if cookiecutter.command_line_interface == 'click' %}
     runner = CliRunner()
-    result = runner.invoke(main, [])
+    result = runner.invoke(cli, [])
 
     assert result.output == 'Hello World!\n'
     assert result.exit_code == 0
